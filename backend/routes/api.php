@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,12 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
-Route::get('test',function(){
-    return "zay";
+Route::get('test',[UserController::class,'getUser']);
+
+Route::post('login',[UserController::class,'login']);
+
+Route::post('register',[UserController::class,'register']);
+
+Route::group(['middleware'=>'auth:sanctum'],function(){
+    Route::post('logout',[UserController::class,'logout']);
 });
