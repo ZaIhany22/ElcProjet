@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/test',function(){
-    return "mety";
+    return "zay";
 });
