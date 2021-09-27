@@ -19,7 +19,7 @@ class UserController extends Controller
             'role'=>'required'
         ]);
 
-        $user=User::where('email',$fields['email'])->first();
+        $user=User::where('email',$fields['email'])->first(); //mverifier hoe ao anaty base ve le olona sinon tonga de erreur
         if(!$user){
             return response([
                 'message'=>'Utilisateur inexistant',
@@ -29,7 +29,7 @@ class UserController extends Controller
             
        
 
-        if($user->role_id=="1" && $fields['role']=="1"){
+        if($user->role_id=="1" && $fields['role']=="1"){ //mverifier tena admin ve le olona
             if(Hash::check($fields['password'],$user->password)){
                 $token=$user->createToken('myapptoken')->plainTextToken;
                 $response=[
@@ -50,7 +50,7 @@ class UserController extends Controller
         }elseif ($user->role_id=="1" && $fields['role']!=1){
             return response('Compte client',201);
         }
-        if($user->role_id=="2" && $fields['role']=="2"){
+        if($user->role_id=="2" && $fields['role']=="2"){ //mverifier hoe client ve le olona 
             if(Hash::check($fields['password'],$user->password)){
                 $token=$user->createToken('myapptoken')->plainTextToken;
                 $response=[
