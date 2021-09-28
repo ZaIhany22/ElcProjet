@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
     return $request->user();
 });*/
 
-//Route::get('test',[UserController::class,'getUser']);
+Route::get('test',[UserController::class,'getUser']);
 
 Route::post('login',[UserController::class,'login']);
 
